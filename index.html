@@ -2,15 +2,17 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Personal Website</title>
 
-  <!-- 字體 -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -18,165 +20,310 @@
     }
 
     body{
-      background:#ece58d;
+      font-family:'Poppins', sans-serif;
+
+      /* 藍色漸層背景 */
+      background:linear-gradient(
+        135deg,
+        #dfefff 0%,
+        #d6e8ff 40%,
+        #edf6ff 100%
+      );
+
       overflow-x:hidden;
-      font-family:'Cormorant Garamond', serif;
-      color:#111;
+      color:#222;
+      min-height:100vh;
+      position:relative;
     }
 
-    /* 上方導覽列 */
-    nav{
+    /* 背景模糊色塊 */
+
+    .blur{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(90px);
+      opacity:0.75;
+      z-index:-1;
+    }
+
+    .blur1{
+      width:320px;
+      height:320px;
+      background:#6ec6ff;
+      top:80px;
+      left:-80px;
+    }
+
+    .blur2{
+      width:280px;
+      height:280px;
+      background:#4fc3f7;
+      bottom:40px;
+      left:220px;
+    }
+
+    .blur3{
+      width:260px;
+      height:260px;
+      background:#90caf9;
+      top:-40px;
+      left:520px;
+    }
+
+    /* Header */
+
+    header{
       width:100%;
-      padding:18px 30px;
-      border-bottom:1px solid #222;
       display:flex;
       justify-content:space-between;
       align-items:center;
+      padding:30px 60px;
+    }
+
+    .logo{
       font-size:14px;
+      letter-spacing:3px;
+      font-weight:600;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:#111;
+      font-size:14px;
+      font-weight:500;
       letter-spacing:1px;
     }
 
-    nav .center{
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%);
+    /* 主內容 */
+
+    .container{
+      min-height:calc(100vh - 100px);
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      gap:100px;
+
+      padding:40px 60px 80px;
+
+      flex-wrap:wrap;
     }
 
-    /* 主視覺 */
-    .hero{
-      position:relative;
-      min-height:100vh;
-      padding:60px 40px;
-    }
-
-    .big-text{
-      font-size:10vw;
-      line-height:0.9;
-      font-weight:300;
-      z-index:2;
-      position:relative;
-    }
-
-    /* 照片區 */
-    .photo-box{
-      position:absolute;
-      right:8%;
-      bottom:10%;
-      width:320px;
-      height:420px;
-      overflow:hidden;
-      box-shadow:0 10px 30px rgba(0,0,0,0.15);
-    }
+    /* 左側照片 */
 
     .photo-box img{
-      width:100%;
-      height:100%;
+      width:420px;
+      max-width:90vw;
+
+      border-radius:28px;
+
       object-fit:cover;
+
+      box-shadow:
+        0 20px 40px rgba(0,0,0,0.12),
+        0 0 30px rgba(255,255,255,0.4);
+    }
+
+    /* 右側內容 */
+
+    .content{
+      max-width:520px;
+    }
+
+    .content h1{
+      font-family:'Cormorant Garamond', serif;
+
+      font-size:76px;
+      line-height:0.95;
+
+      margin-bottom:24px;
+
+      font-weight:700;
+    }
+
+    .content p{
+      font-size:20px;
+      line-height:1.8;
+
+      margin-bottom:40px;
+
+      color:#333;
     }
 
     /* 按鈕 */
-    .btn{
-      position:absolute;
-      left:50px;
-      bottom:80px;
 
-      display:inline-block;
-      padding:14px 30px;
-      border:1px solid #111;
-      color:#111;
+    .buttons{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .btn{
+      height:60px;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      border-radius:16px;
+
       text-decoration:none;
-      font-size:18px;
+
+      background:rgba(255,255,255,0.7);
+
+      backdrop-filter:blur(10px);
+
+      border:1px solid rgba(255,255,255,0.5);
+
+      color:#111;
+
+      font-weight:600;
+
+      letter-spacing:1px;
+
       transition:0.3s;
-      background:transparent;
     }
 
     .btn:hover{
+      transform:translateY(-3px);
+
       background:#111;
-      color:#ece58d;
+      color:white;
+
+      box-shadow:0 12px 24px rgba(0,0,0,0.18);
     }
 
-    /* 小圓圈裝飾 */
-    .circle{
-      position:absolute;
-      width:30px;
-      height:30px;
-      border:1px solid #111;
-      border-radius:50%;
+    /* 社群 */
+
+    .social{
+      margin-top:40px;
+
+      display:flex;
+      gap:18px;
     }
 
-    .circle.one{
-      top:55%;
-      left:12%;
+    .social a{
+      text-decoration:none;
+
+      color:#111;
+
+      font-weight:600;
+
+      transition:0.2s;
     }
 
-    .circle.two{
-      top:40%;
-      right:18%;
-      width:24px;
-      height:24px;
+    .social a:hover{
+      transform:scale(1.15);
     }
 
-    /* 手機版 */
-    @media(max-width:768px){
+    /* RWD */
 
-      .hero{
-        padding:40px 20px 120px;
+    @media(max-width:900px){
+
+      header{
+        padding:24px;
       }
 
-      .big-text{
-        font-size:18vw;
+      .container{
+        gap:50px;
+        padding:20px 24px 60px;
       }
 
-      .photo-box{
-        position:relative;
-        width:100%;
-        height:420px;
-        right:auto;
-        bottom:auto;
-        margin-top:40px;
+      .content{
+        text-align:center;
       }
 
-      .btn{
-        position:relative;
-        left:auto;
-        bottom:auto;
-        margin-top:30px;
+      .content h1{
+        font-size:54px;
+      }
+
+      .content p{
+        font-size:18px;
+      }
+
+      .social{
+        justify-content:center;
       }
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- 導覽列 -->
-  <nav>
-    <div>portfolio</div>
-    <div class="center">Amy</div>
-    <div>2026</div>
-  </nav>
+  <!-- 模糊背景 -->
 
-  <!-- 主畫面 -->
-  <section class="hero">
+  <div class="blur blur1"></div>
+  <div class="blur blur2"></div>
+  <div class="blur blur3"></div>
 
-    <div class="big-text">
-      Amy<br>
-      Digital<br>
-      Designer
+  <!-- Header -->
+
+  <header>
+
+    <div class="logo">
+      YOUR NAME | PORTFOLIO
     </div>
 
-    <!-- 裝飾 -->
-    <div class="circle one"></div>
-    <div class="circle two"></div>
+    <nav>
+      <a href="#">HOME</a>
+    </nav>
 
-    <!-- 個人照片 -->
+  </header>
+
+  <!-- 主內容 -->
+
+  <section class="container">
+
+    <!-- 左側照片 -->
+
     <div class="photo-box">
-      <img src="me.jpg" alt="my photo">
+      <img src="me.jpg" alt="My Photo">
     </div>
 
-    <!-- PDF作品 -->
-    <a class="btn" href="work.pdf" target="_blank">
-      VIEW WORK
-    </a>
+    <!-- 右側 -->
+
+    <div class="content">
+
+      <h1>
+        Hi,<br>
+        I'm Your Name.
+      </h1>
+
+      <p>
+        Designer．Developer．Creator<br>
+        Welcome to my personal website.
+      </p>
+
+      <div class="buttons">
+
+        <!-- PDF作品 -->
+
+        <a class="btn" href="work.pdf" target="_blank">
+          VIEW MY WORK
+        </a>
+
+        <!-- Email -->
+
+        <a class="btn" href="mailto:your@email.com">
+          CONTACT ME
+        </a>
+
+      </div>
+
+      <!-- 社群 -->
+
+      <div class="social">
+
+        <a href="#">IG</a>
+        <a href="#">FB</a>
+        <a href="#">YT</a>
+        <a href="#">X</a>
+
+      </div>
+
+    </div>
 
   </section>
 
